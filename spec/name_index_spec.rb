@@ -1,8 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../name_index')
 
 describe NameIndex do
-  input = %w[キシモト イトウ ババ カネダ ワダ ハマダ]
-  ary = ['キシモト', 'イトウ', 'ババ', 'カネダ', 'ワダ', 'ハマダ']
-  output = %w[[ア [[イトウ]]] [カ [[カネダ キシモト]]] [ハ [[ハマダ ババ]]] [ワ, [[ワダ]]]]
-  specify { expect(NameIndex.create_index([ary])).to eq [] }
+  specify { expect(NameIndex.create_index(['キシモト', 'イトウ', 'ババ', 'カネダ', 'ワダ', 'ハマダ'])).to eq ['カ', ['カネダ', 'キシモト'], 'ア', ['イトウ'], 'ハ', ['ハマダ', 'ババ'], 'ワ', ['ワダ']] }
 end
+
